@@ -1,40 +1,70 @@
-# Theem College of Engineering - Fee Management Portal
+# 🎓 TCOE Fee Management Portal
 
-This is a premium, enterprise-grade Fee Management System built with React (Vite) and Node.js (Express + SQLite).
+A premium, enterprise-grade full-stack web application designed for Theem College of Engineering to manage student fee collections, generate official receipts, and track financial analytics.
 
-## How to Run the Application
+## ✨ Features
 
-Because this is a full-stack application, you need to run both the **Backend Server** (Database & APIs) and the **Frontend Server** (User Interface) at the same time.
+- **Premium UI/UX:** Built with a stunning Glassmorphism design system, smooth micro-animations, and a responsive layout.
+- **Financial Analytics Dashboard:** Live, interactive charts (powered by Recharts) showing revenue distribution across academic years and collected vs. pending statistics.
+- **Real-Time Email Verification & Reminders:** Integrated with Nodemailer to send real cryptographic verification links upon admin signup, and automated HTML email reminders to students with pending dues.
+- **Bulk Data Management:** Blazing fast CSV Import/Export functionality (via Papaparse) capable of handling hundreds of student records instantly.
+- **Automated PDF Generation:** 1-click generation of Official Itemized Fee Receipts and Automated Defaulter List Reports (via jsPDF).
+- **Dynamic Fee Structures:** Itemized tracking for Tuition, Library, and Exam fees.
+
+---
+
+## 📸 Screenshots
+
+*(You can drag and drop your screenshots here when editing this file on GitHub!)*
+
+### 1. The Analytics Dashboard
+`[Insert Dashboard Screenshot Here]`
+
+### 2. The Students Management & Slide-Out Profile
+`[Insert Students Table Screenshot Here]`
+
+### 3. Automated Defaulter PDF Generator
+`[Insert PDF Screenshot Here]`
+
+---
+
+## 🚀 Tech Stack
+
+### Frontend
+- **React.js (Vite)**
+- **CSS3** (Custom Glassmorphism Design System)
+- **Recharts** (Data Visualization)
+- **jsPDF & jsPDF-AutoTable** (Document Generation)
+- **PapaParse** (CSV Processing)
+
+### Backend
+- **Node.js & Express.js** (REST API)
+- **SQLite3** (Relational Database)
+- **Nodemailer** (Email Service Integration)
+- **JSON Web Tokens (JWT) & Bcrypt** (Authentication & Security)
+
+---
+
+## 💻 How to Run Locally
+
+If you want to run this application on your local machine, follow these steps:
 
 ### 1. Start the Backend Server
-1. Open a terminal or command prompt.
-2. Navigate to the `backend` folder:
-   ```bash
-   cd backend
-   ```
-3. Start the Node.js server:
-   ```bash
-   node server.js
-   ```
-*(You should see a message saying "Backend running on port 5000" and "Connected to SQLite database".)*
+```bash
+cd backend
+npm install
+node server.js
+```
 
 ### 2. Start the Frontend Server
-1. Open a **second, separate terminal** window.
-2. Navigate to the `frontend` folder:
-   ```bash
-   cd frontend
-   ```
-3. Start the React development server:
-   ```bash
-   npm run dev
-   ```
-*(It will give you a local URL, usually `http://localhost:5173/`. Click that link to open the portal in your browser!)*
+Open a **new, separate terminal** and run:
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-## Features Included
-- **Premium Glassmorphism UI**
-- **Interactive Analytics Dashboard (Recharts)**
-- **Real Email Verification & Reminders (Nodemailer)**
-- **Bulk CSV Import & Export (Papaparse)**
-- **Itemized Fee Structures**
-- **Automated Defaulters PDF Generator (jsPDF)**
-- **Automated Official Receipt Generation**
+Open `http://localhost:5173` in your browser to view the application!
+
+---
+*Built by Ayan Khan*
