@@ -15,14 +15,17 @@ A premium, enterprise-grade full-stack web application designed for Theem Colleg
 
 ## 📸 Screenshots
 
-### 1. The Analytics Dashboard
-![Dashboard](screenshot/Screenshot%20(410).png)
-
-### 2. The Students Management & Slide-Out Profile
-![Students Table](screenshot/Screenshot%20(411).png)
-
-### 3. Automated Defaulter PDF Generator
-![PDF Report](screenshot/Screenshot%20(412).png)
+![Screenshot](screenshot/Screenshot%20(415).png)
+![Screenshot](screenshot/Screenshot%20(416).png)
+![Screenshot](screenshot/Screenshot%20(417).png)
+![Screenshot](screenshot/Screenshot%20(418).png)
+![Screenshot](screenshot/Screenshot%20(419).png)
+![Screenshot](screenshot/Screenshot%20(420).png)
+![Screenshot](screenshot/Screenshot%20(421).png)
+![Screenshot](screenshot/Screenshot%20(422).png)
+![Screenshot](screenshot/Screenshot%20(423).png)
+![Screenshot](screenshot/Screenshot%20(424).png)
+![Screenshot](screenshot/Screenshot%20(425).png)
 
 ---
 
