@@ -15,16 +15,14 @@ A premium, enterprise-grade full-stack web application designed for Theem Colleg
 
 ## 📸 Screenshots
 
-*(You can drag and drop your screenshots here when editing this file on GitHub!)*
-
 ### 1. The Analytics Dashboard
-`[Insert Dashboard Screenshot Here]`
+![Dashboard](screenshot/Screenshot%20(410).png)
 
 ### 2. The Students Management & Slide-Out Profile
-`[Insert Students Table Screenshot Here]`
+![Students Table](screenshot/Screenshot%20(411).png)
 
 ### 3. Automated Defaulter PDF Generator
-`[Insert PDF Screenshot Here]`
+![PDF Report](screenshot/Screenshot%20(412).png)
 
 ---
 
