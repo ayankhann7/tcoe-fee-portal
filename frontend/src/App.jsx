@@ -58,8 +58,7 @@ function Signup() {
           <button className="btn" type="submit">Sign Up</button>
         </form>
         <p style={{ marginTop: '1.5rem', fontSize: '0.9rem', textAlign: 'center' }}>
-          Already have an account? <Link to="/login" className="text-link">Login</Link><br/><br/>
-          Needs verification? <Link to="/verify" className="text-link">Verify Email</Link>
+          Already have an account? <Link to="/login" className="text-link">Login</Link>
         </p>
       </div>
     </div>
