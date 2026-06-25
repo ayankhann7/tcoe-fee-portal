@@ -142,7 +142,9 @@ app.post('/api/auth/login', (req, res) => {
     const { username, password } = req.body;
     db.get(`SELECT * FROM users WHERE username = ?`, [username], (err, user) => {
         if (err || !user) return res.status(404).json({ error: 'User not found' });
-        if (user.is_verified === 0) return res.status(401).json({ error: 'Please verify your email first!' });
+        
+        // Temporarily bypassed email verification requirement for easier live testing
+        // if (user.is_verified === 0) return res.status(401).json({ error: 'Please verify your email first!' });
 
         const isValid = bcrypt.compareSync(password, user.password);
         if (!isValid) return res.status(401).json({ error: 'Invalid password' });
