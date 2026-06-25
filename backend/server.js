@@ -95,33 +95,10 @@ app.post('/api/auth/signup', (req, res) => {
     db.run(`INSERT INTO users (username, email, password, verification_token) VALUES (?, ?, ?, ?)`, [username, email, hash, verificationToken], function (err) {
         if (err) return res.status(400).json({ error: 'Username or Email already exists' });
 
-        // Send Verification Email
-        const verificationLink = `https://tcoe-fee-portal.vercel.app/verify?token=${verificationToken}`;
-        const mailOptions = {
-            from: 'tcoe.admin@college.edu',
-            to: email,
-            subject: 'Verify Your TCOE Portal Account',
-            html: `
-                <div style="font-family: Arial, sans-serif; max-width: 500px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
-                    <h2 style="color: #10b981; text-align: center;">Theem College of Engineering</h2>
-                    <p>Thank you for registering for the Admin Fee Portal.</p>
-                    <p>Please click the button below to verify your email address and activate your account:</p>
-                    <div style="text-align: center; margin: 30px 0;">
-                        <a href="${verificationLink}" style="background-color: #10b981; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">Verify Email</a>
-                    </div>
-                    <p style="font-size: 0.8em; color: #888;">If you did not request this, please ignore this email.</p>
-                </div>
-            `
-        };
-
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.error("Nodemailer Error: ", error);
-            }
-            res.json({ 
-                message: `Signup successful! Since Gmail blocks cloud servers, here is your verification link for testing: ${verificationLink}`, 
-                userId: this.lastID 
-            });
+        // Email verification bypassed
+        res.json({ 
+            message: `Account successfully created! You can now log in.`, 
+            userId: this.lastID 
         });
     });
 });
@@ -143,8 +120,8 @@ app.post('/api/auth/login', (req, res) => {
     const { username, password } = req.body;
     db.get(`SELECT * FROM users WHERE username = ?`, [username], (err, user) => {
         if (err || !user) return res.status(404).json({ error: 'User not found' });
-        
-        if (user.is_verified === 0) return res.status(401).json({ error: 'Please verify your email first!' });
+        // Email verification bypassed for demo
+        // if (user.is_verified === 0) return res.status(401).json({ error: 'Please verify your email first!' });
 
         const isValid = bcrypt.compareSync(password, user.password);
         if (!isValid) return res.status(401).json({ error: 'Invalid password' });
