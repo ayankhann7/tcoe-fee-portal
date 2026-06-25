@@ -581,8 +581,8 @@ function Students() {
                 <td>₹{s.total_paid.toLocaleString()}</td>
                 <td>₹{s.pending_fee.toLocaleString()}</td>
                 <td>
-                  <span className={`badge ${s.pending_fee <= 0 ? 'success' : 'danger'}`}>
-                    {s.pending_fee <= 0 ? 'CLEARED' : 'PARTIAL'}
+                  <span className={`badge ${s.pending_fee <= 0 ? 'success' : (s.total_fee === s.pending_fee ? 'danger' : 'warning')}`}>
+                    {s.pending_fee <= 0 ? 'CLEARED' : (s.total_fee === s.pending_fee ? 'UNPAID' : 'PARTIAL')}
                   </span>
                 </td>
                 <td style={{ display: 'flex', gap: '5px' }}>
