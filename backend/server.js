@@ -57,11 +57,40 @@ db.serialize(() => {
     db.run(`CREATE TABLE IF NOT EXISTS fees (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         student_id INTEGER,
-        amount_paid INTEGER,
+        amount_paid REAL,
         date_paid TEXT,
         receipt_no TEXT UNIQUE,
         FOREIGN KEY(student_id) REFERENCES students(id)
-    )`);
+    )`, () => {
+        // Auto-seed Demo Data for Portfolio if Database is empty
+        db.get('SELECT COUNT(*) as count FROM users', (err, row) => {
+            if (row && row.count === 0) {
+                console.log("Seeding Demo Data for Portfolio...");
+                const hash = bcrypt.hashSync('admin123', 8);
+                db.run(`INSERT INTO users (username, password, email, is_verified) VALUES ('admin', ?, 'demo@tcoe.edu', 1)`, [hash]);
+                
+                const demoStudents = [
+                    { en: '2105710050', name: 'Khan Ayan Ayub', br: 'Computer Engineering', yr: 'FE', tf: 63000, t: 50000, l: 3000, e: 10000 },
+                    { en: '2105710051', name: 'Khan Ruman Munna', br: 'Information Technology', yr: 'SE', tf: 76000, t: 60000, l: 6000, e: 10000 },
+                    { en: '2105710052', name: 'Shaikh Shahid', br: 'Civil Engineering', yr: 'TE', tf: 154000, t: 140000, l: 4000, e: 10000 }
+                ];
+                
+                demoStudents.forEach(s => {
+                    db.run(`INSERT INTO students (enrollment_no, name, branch, year, total_fee, tuition_fee, library_fee, exam_fee, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`, 
+                    [s.en, s.name, s.br, s.yr, s.tf, s.t, s.l, s.e, 'student@example.com'], function(err) {
+                        if (!err) {
+                            const studentId = this.lastID;
+                            // Add a partial payment for the first two students
+                            if (studentId < 3) {
+                                db.run(`INSERT INTO fees (student_id, amount_paid, date_paid, receipt_no) VALUES (?, ?, ?, ?)`,
+                                [studentId, 25000, new Date().toISOString(), 'TCOE-DEMO' + studentId]);
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    });
 });
 
 // ==========================================
