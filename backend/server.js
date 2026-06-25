@@ -117,10 +117,11 @@ app.post('/api/auth/signup', (req, res) => {
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 console.error("Nodemailer Error: ", error);
-            } else {
-                console.log("Verification Email sent! Preview it here: " + nodemailer.getTestMessageUrl(info));
             }
-            res.json({ message: 'Signup successful. Please check your email for the verification link!', userId: this.lastID });
+            res.json({ 
+                message: `Signup successful! Since Gmail blocks cloud servers, here is your verification link for testing: ${verificationLink}`, 
+                userId: this.lastID 
+            });
         });
     });
 });
