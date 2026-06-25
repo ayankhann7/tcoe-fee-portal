@@ -96,7 +96,7 @@ app.post('/api/auth/signup', (req, res) => {
         if (err) return res.status(400).json({ error: 'Username or Email already exists' });
 
         // Send Verification Email
-        const verificationLink = `http://localhost:5173/verify?token=${verificationToken}`;
+        const verificationLink = `https://tcoe-fee-portal.vercel.app/verify?token=${verificationToken}`;
         const mailOptions = {
             from: 'tcoe.admin@college.edu',
             to: email,
@@ -143,8 +143,7 @@ app.post('/api/auth/login', (req, res) => {
     db.get(`SELECT * FROM users WHERE username = ?`, [username], (err, user) => {
         if (err || !user) return res.status(404).json({ error: 'User not found' });
         
-        // Temporarily bypassed email verification requirement for easier live testing
-        // if (user.is_verified === 0) return res.status(401).json({ error: 'Please verify your email first!' });
+        if (user.is_verified === 0) return res.status(401).json({ error: 'Please verify your email first!' });
 
         const isValid = bcrypt.compareSync(password, user.password);
         if (!isValid) return res.status(401).json({ error: 'Invalid password' });
