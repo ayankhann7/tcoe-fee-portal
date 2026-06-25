@@ -15,8 +15,8 @@ const PORTAL_KEY = 'TCOE_ADMIN_2026';
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'projectdemo81@gmail.com',
-        pass: 'pjojkwkigocjzfpm'
+        user: process.env.EMAIL_USER || 'projectdemo81@gmail.com',
+        pass: process.env.EMAIL_PASS || 'pjojkwkigocjzfpm'
     }
 });
 
@@ -143,8 +143,7 @@ app.post('/api/auth/login', (req, res) => {
     db.get(`SELECT * FROM users WHERE username = ?`, [username], (err, user) => {
         if (err || !user) return res.status(404).json({ error: 'User not found' });
         
-        // Temporarily bypassed email verification requirement for easier live testing
-        // if (user.is_verified === 0) return res.status(401).json({ error: 'Please verify your email first!' });
+        if (user.is_verified === 0) return res.status(401).json({ error: 'Please verify your email first!' });
 
         const isValid = bcrypt.compareSync(password, user.password);
         if (!isValid) return res.status(401).json({ error: 'Invalid password' });
