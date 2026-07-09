@@ -2,6 +2,14 @@
 
 A premium, enterprise-grade full-stack web application designed for Theem College of Engineering to manage student fee collections, generate official receipts, and track financial analytics.
 
+### 🚀 Live Demo
+**URL:** [https://tcoe-fee-portal.vercel.app](https://tcoe-fee-portal.vercel.app)
+> **Note:** The application database automatically seeds with demo data. You can log in immediately to test the features!
+> 
+> **Test Admin Credentials:**
+> - **Username:** `admin`
+> - **Password:** `admin123`
+
 ## ✨ Features
 
 - **Premium UI/UX:** Built with a stunning Glassmorphism design system, smooth micro-animations, and a responsive layout.
